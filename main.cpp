@@ -45,10 +45,10 @@ int main() {
       0 4 1
       x
   */
-  res.push_back(ServerAssign(0, 1, 0));
-  res.push_back(ServerAssign(1, 0, 1));
-  res.push_back(ServerAssign(1, 3, 0));
-  res.push_back(ServerAssign(0, 4, 1));
+  res.push_back(ServerAssign(0, 1, 0, 5));
+  res.push_back(ServerAssign(1, 0, 1, 6));
+  res.push_back(ServerAssign(1, 3, 0, 7));
+  res.push_back(ServerAssign(0, 4, 1, 8));
   res.push_back(ServerAssign());
 
   // check total capacity
