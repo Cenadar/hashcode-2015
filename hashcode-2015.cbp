@@ -33,10 +33,22 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="annealer.h">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="pool_initializer.h" />
-		<Unit filename="server.h" />
-		<Unit filename="server_assign.h" />
+		<Unit filename="pool.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="pool_initializer.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="server.h">
+			<Option compile="1" />
+		</Unit>
+		<Unit filename="server_assign.h">
+			<Option compile="1" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
