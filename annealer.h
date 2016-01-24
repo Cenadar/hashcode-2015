@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <cstdlib>
 #include <math.h>
 
 #include "server_assign.h"

@@ -22,7 +22,6 @@ class ServerAssign {
   ServerAssign() {
     this->isAllocated = false;
   }
-
 };
 
 #endif

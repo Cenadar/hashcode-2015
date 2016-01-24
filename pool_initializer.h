@@ -38,8 +38,13 @@ class PoolInitializer {
       pools.insert(Pool(i, servers_.size()));
     }
 
-    vector<ServerAssign> q;
-    sort(q.begin(), q.end());
+    vector<ServerAssign*> q;
+    for (auto& row : servers_) {
+      for (auto& s : row) {
+        q.emplace_back(&s);
+      }
+    }
+    sort(q.begin(), q.end(), [](const ServerAssign* a, const ServerAssign* b) { return a->capacity > b->capacity; } );
 
     for (auto &server : q) {
       int pool_pos = rand() % last_pools;
@@ -49,7 +54,7 @@ class PoolInitializer {
       }
 
       Pool pool = *it;
-      pool.AddServer(server);
+      pool.AddServer(*server);
       pools.erase(it);
       pools.insert(pool);
     }
