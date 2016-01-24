@@ -9,7 +9,7 @@
 using namespace std;
 
 int gc(vector<Server> servers, vector<ServerAssign> res) {
-  ;
+  return -2;
 }
 
 int main() {

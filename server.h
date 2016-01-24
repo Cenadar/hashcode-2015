@@ -5,8 +5,8 @@ using namespace std;
 
 struct Server {
  public:
-  int capacity;
   int slots;
+  int capacity;
 
   Server(int slots, int capacity): slots(slots), capacity(capacity) {
   }
