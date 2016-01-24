@@ -31,10 +31,12 @@ int main() {
 
     for (int i=0; i<TEST; i++) {
         clock_t tm = clock();
-        string inFile = "test_" + to_str(i) + ".txt" + (i < 10 ? " " : "");
+        string inFile = "tests/test_" + to_str(i) + ".txt" + (i < 10 ? " " : "");
         int result = rand();
 
-        ;
+        //FILE *outf = fopen(inFile.c_str(), "r");
+        //
+        //fclose(outf);
 
         tm = clock() - tm;
         printf("%s        %9d        (%f seconds)\n", inFile.c_str(), result, ((float)tm)/CLOCKS_PER_SEC);
