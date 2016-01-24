@@ -5,12 +5,14 @@ using namespace std;
 
 class ServerAssign {
  public:
+  int capacity;
   int rowNo;
   int slotNo;
   int poolNo;
   bool isAllocated;
 
-  ServerAssign(int rowNo, int slotNo, int poolNo) {
+  ServerAssign(int rowNo, int slotNo, int poolNo, int _capacity) {
+    this->capacity = _capacity;
     this->rowNo = rowNo;
     this->slotNo = slotNo;
     this->poolNo = poolNo;
@@ -20,6 +22,7 @@ class ServerAssign {
   ServerAssign() {
     this->isAllocated = false;
   }
+
 };
 
 #endif

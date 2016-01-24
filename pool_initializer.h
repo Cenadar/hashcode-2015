@@ -1,6 +1,10 @@
 #ifndef POOL_INITIALIZER_H
 #define POOL_INITIALIZER_H
 
+#include <vector>
+
+#include "server_assign.h"
+
 using namespace std;
 
 class PoolInitializer {
