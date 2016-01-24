@@ -4,6 +4,7 @@
 using namespace std;
 
 class Server {
+
  public:
   int capacity;
   int slots;

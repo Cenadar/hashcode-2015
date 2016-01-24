@@ -7,14 +7,18 @@ class ServerAssign {
  public:
   int rowNo;
   int slotNo;
+  int slots;
   int poolNo;
+  int capacity;
   bool isAllocated;
 
-  ServerAssign(int rowNo, int slotNo, int poolNo) {
+  ServerAssign(int rowNo, int slotNo, int poolNo, int capacity, int slots) {
     this->rowNo = rowNo;
     this->slotNo = slotNo;
     this->poolNo = poolNo;
     this->isAllocated = true;
+    this->capacity= capacity;
+    this->slots = slots;
   }
 
   ServerAssign() {

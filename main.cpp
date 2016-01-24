@@ -5,6 +5,7 @@
 
 #include "server.h"
 #include "server_assign.h"
+#include "location_solver.h"
 
 using namespace std;
 
@@ -37,6 +38,18 @@ int main() {
       servers.push_back(Server(a, b));
   }
 
+    LocationSolver * pSolver = new  LocationSolver(
+            R,
+            S,
+            U,
+            P,
+            M,
+            unavailableSlots,
+            servers);
+
+    pSolver->solve();
+
+
   vector<ServerAssign> res;
   /*
       0 1 0
@@ -45,12 +58,12 @@ int main() {
       0 4 1
       x
   */
-  res.push_back(ServerAssign(0, 1, 0));
+/*  res.push_back(ServerAssign(0, 1, 0));
   res.push_back(ServerAssign(1, 0, 1));
   res.push_back(ServerAssign(1, 3, 0));
   res.push_back(ServerAssign(0, 4, 1));
   res.push_back(ServerAssign());
-
+*/
   // check total capacity
 
   return 0;
