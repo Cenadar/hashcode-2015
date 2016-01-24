@@ -1,8 +1,14 @@
 #ifndef LOCATION_SOLVER_H_INCLUDED
 #define LOCATION_SOLVER_H_INCLUDED
 
+#include "server.h"
+#include "server_assign.h"
+#include "pool_initializer.h"
+
 #include <algorithm>
 #include <set>
+#include <iostream>
+
 
 using namespace std;
 
@@ -26,7 +32,7 @@ struct Interval {
         start(_start), length(_length) {}
 
     void out() {
-        printf("[%d %d]\n", length, start);
+        //printf("[%d %d]\n", length, start);
     }
 };
 
@@ -37,7 +43,7 @@ struct IntervalRow {
         interval(interval), row(row) {}
 
     void out() const {
-        printf("[%d %d] [%d]\n", interval.length, interval.start, row);
+        //printf("[%d %d] [%d]\n", interval.length, interval.start, row);
     }
 };
 
@@ -63,7 +69,6 @@ private:
 
     void getFreeForRow(int row, vector<Interval> & free, vector<int> & unavailable) {
         sort(unavailable.begin(), unavailable.end());
-        out(unavailable, "unavailable");
 
         int pos = 0;
         int start = 0;
@@ -88,7 +93,7 @@ private:
             free.push_back(Interval(start, S - start));
 
 
-        cout << "Free intervals" << endl;
+        //cout << "Free intervals" << endl;
         for (auto & inter : free) {
             inter.out();
         }
@@ -103,6 +108,7 @@ private:
         for (auto & p : unavailableSlots) {
             int row = p.first;
             int col = p.second;
+            swap(row, col);
             unavailable[row].push_back(col);
         }
 
@@ -141,21 +147,19 @@ public:
 
 
 
-    vector<vector<ServerAssign> > solve() {
-
-
+    vector<vector<ServerAssign> > solve(int &result) {
         vector<vector<ServerAssign> > location;
 
         vector<vector<Interval> > free;
         getFreePositionRows(free);
 
         for (int test = 0; test < TESTS_FUNCTION; test++) {
-            printf("TEST [%d]\n", test);
+            //printf("TEST [%d]\n", test);
 
             initForSort(123);
             sort(begin(servers), end(servers), compFunc);
             for (auto & s : servers) {
-                printf("[%d\t%d\t%lf]\n", s.capacity, s.slots, value(s));
+                //printf("[%d\t%d\t%lf]\n", s.capacity, s.slots, value(s));
             }
 
             // Intervals
@@ -168,7 +172,7 @@ public:
                 }
             }
 
-            cout << "Free intervals sorted" << endl;
+            //cout << "Free intervals sorted" << endl;
             for (auto & inter : intervals) {
                 inter.out();
             }
@@ -180,9 +184,9 @@ public:
             for (auto & s: servers) {
                 nonAssignServers.insert(s);
             }
-            cout << "Servers sorted" << endl;
+            //cout << "Servers sorted" << endl;
             for (auto & s : servers) {
-                printf("[%d\t%d\t%lf]\n", s.capacity, s.slots, value(s));
+                //printf("[%d\t%d\t%lf]\n", s.capacity, s.slots, value(s));
             }
 
             vector<vector<ServerAssign> > answer;
@@ -194,7 +198,7 @@ public:
                 }
 
                 auto itInterval = intervals.begin();
-                cout << "Intervals for processing" << endl;
+                //cout << "Intervals for processing" << endl;
                 itInterval->out();
 
                 auto itServer = nonAssignServers.begin();
@@ -222,17 +226,16 @@ public:
                     else {
                         intervals.erase(itInterval);
                     }
-                    printf("+++ [%d %d]\n", itServer->capacity, itServer->slots);
+                    //printf("+++ [%d %d]\n", itServer->capacity, itServer->slots);
 
                 }
                 nonAssignServers.erase(itServer);
             }
 
 
-
+            result = PoolInitializer::calc(answer, P);
 
         }
-
 
         return location;
     }

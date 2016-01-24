@@ -5,11 +5,11 @@ using namespace std;
 
 class ServerAssign {
  public:
+  int capacity;
   int rowNo;
   int slotNo;
   int slots;
   int poolNo;
-  int capacity;
   bool isAllocated;
 
   ServerAssign(int rowNo, int slotNo, int poolNo, int capacity, int slots) {

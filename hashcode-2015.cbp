@@ -33,6 +33,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="location_solver.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="pool_initializer.h" />
 		<Unit filename="server.h" />
